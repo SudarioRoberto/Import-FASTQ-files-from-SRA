@@ -1,0 +1,24 @@
+#Remove the weid names in the list file
+
+sed -i 's/\r$//' your.listname.txt
+
+
+# Load SRAToolkit v3.0.0
+module load sratoolkit/3.0.0
+
+# Prefetch the SRA files from the repository
+prefetch $(cat list_of_accessions.txt)
+
+
+
+#The code above should work. If not, try the code below: 
+
+
+cat SraAccList.txt | xargs -i fastq-dump -v --gzip {}
+
+
+
+
+
+
+
