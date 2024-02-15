@@ -1,24 +1,31 @@
+
+ssh ssilvaju@agate.msi.umn.edu
+
+
+
+srun -N 1 --ntasks-per-node=2 --mem-per-cpu=8gb -t 02:00:00 -p interactive --pty bash
+cd /home/urrio001/ssilvaju/SowWork
+
+
 #Remove the weid names in the list file
 
-sed -i 's/\r$//' your.listname.txt
-
+sed -i 's/\r$//' list_of_accessions.txt
 
 # Load SRAToolkit v3.0.0
 module load sratoolkit/3.0.0
 
-# Prefetch the SRA files from the repository
-prefetch $(cat list_of_accessions.txt)
 
 
 
 #The code above should work. If not, try the code below: 
 
-
-cat SraAccList.txt | xargs -i fastq-dump -v --gzip {}
-
+cat list_of_accessions.txt | xargs -i fastq-dump -v --gzip {}
 
 
 
 
+
+# Prefetch the SRA files from the repository
+prefetch $(cat list_of_accessions.txt)
 
 
