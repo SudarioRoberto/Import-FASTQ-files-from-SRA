@@ -1,0 +1,9 @@
+### List all the files that start with SRR
+
+ls -d SRR*/
+
+##To remove all the directores and theur content that start with SRR
+
+rm -rf SRR*/
+
+
